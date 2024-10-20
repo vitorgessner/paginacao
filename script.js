@@ -21,6 +21,16 @@ function alocarPaginas(numeros) {
     return alocacoes;
 }
 
+function verificaFrames() {
+    for (let x = 0; x < situacaoFrame.length; x++) {
+        if (situacaoFrame[x] == alocacoes[0]) {
+            frameBit[idx][1] = 1;
+            alocacoes.shift();
+            return;
+        }
+    }
+}
+
 // Função que imprime o número da página lida, as trocas e como os frames se encontram no momento
 function alocarFrames(frames, sequencia) {
     let situacaoFrame = criaFrames(frames);
@@ -36,19 +46,30 @@ function alocarFrames(frames, sequencia) {
     }
 
     while (alocacoes.length > 0) {
-        for (let j = 0; j < situacaoFrame.length; j++) {
-            if(!alocacoes[0]){
+        loop1: for (let j = 0; j < situacaoFrame.length; j++) {
+            if (!alocacoes[0]) {
                 break;
             }
 
             troca = false;
+
+            loop2: for (let x = 0; x < situacaoFrame.length; x++) {
+                if (situacaoFrame[x] == alocacoes[0]) {
+                    frameBit[x][1] = 1;
+                    console.log(alocacoes[0], troca, situacaoFrame);
+                    alocacoes.shift();
+                    break loop1;
+                }
+            }
 
             // Se o bit de referência for 1, o bit se torna 0 dando uma "segunda chance" para a página.
             if (frameBit[j][1] == 1) {
                 frameBit[j][1] = 0;
             } else {
                 // Se houver a troca, incrementa a quantidade de trocas
-                if (situacaoFrame[j] != alocacoes[0] && situacaoFrame[j] != 0) {
+                if (situacaoFrame[j] == 0) {
+                    troca = false;
+                } else {
                     troca = true;
                     qtdTrocas++;
                 }
@@ -68,7 +89,7 @@ function alocarFrames(frames, sequencia) {
             interacoes++;
         }
     }
-    console.log(interacoes);
+    console.log('andadas do ponteiro: ' + interacoes);
 
     return `Programa finalizado com ${qtdTrocas} trocas de páginas.`;
 }
