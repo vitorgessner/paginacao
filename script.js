@@ -43,13 +43,13 @@ function alocarFrames(frames, sequencia) {
 
             troca = false;
 
-            // Loop que verifica se a próxima página da sequência já está alocada, se estiver, muda o bit para 1, exibe a situação do frame e elimina a página da sequência, por fim, passa o ponteiro quebrando o loop 1
+            // Loop que verifica se a próxima página da sequência já está alocada, se estiver, muda o bit para 1, exibe a situação do frame e elimina a página da sequência, por fim, passa o ponteiro pulando o loop 1
             loop2: for (let x = 0; x < situacaoFrame.length; x++) {
                 if (situacaoFrame[x] == alocacoes[0]) {
                     frameBit[x][1] = 1;
                     console.log(alocacoes[0], troca, situacaoFrame);
                     alocacoes.shift();
-                    break loop1;
+                    continue loop1;
                 }
             }
 
