@@ -82,7 +82,7 @@ function alocarFrames(frames, sequencia) {
     }
     console.log('andadas do ponteiro: ' + interacoes);
 
-    return `Programa finalizado com ${qtdTrocas} trocas de páginas.`;
+    return console.log(`Programa finalizado com ${qtdTrocas} trocas de páginas.`);
 }
 
 alocarFrames(3, "1,2,3,4,2,3,5,2,1");
