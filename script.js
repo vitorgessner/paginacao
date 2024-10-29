@@ -28,7 +28,6 @@ function alocarFrames(frames, sequencia) {
     let troca;
     let qtdTrocas = 0;
     let frameBit = [];
-    let interacoes = 0;
 
     // frameBit são os frames junto com o bit de referência de cada página
     for (let i = 0; i < situacaoFrame.length; i++) {
@@ -77,10 +76,8 @@ function alocarFrames(frames, sequencia) {
                 // Remove o número utilizado da sequência de alocações
                 alocacoes.shift();
             }
-            interacoes++;
         }
     }
-    console.log('andadas do ponteiro: ' + interacoes);
 
     return console.log(`Programa finalizado com ${qtdTrocas} trocas de páginas.`);
 }

@@ -27,10 +27,9 @@ function alocarFrames(frames, sequencia) {
     let alocacoes = alocarPaginas(sequencia);
     let troca;
     let qtdTrocas = 0;
-    let interacoes = 0;
 
     for (let i = 0; i < alocacoes.length; i++) {
-        let aleatorio = Math.floor(Math.random() * 3)
+        let aleatorio = Math.floor(Math.random() * situacaoFrame.length)
         troca = false
 
         for (let j = 0; j < situacaoFrame.length; j++) {
@@ -47,13 +46,11 @@ function alocarFrames(frames, sequencia) {
             situacaoFrame[aleatorio] = alocacoes[i]
             qtdTrocas++
         }
-        interacoes++;
         console.log(alocacoes[i], troca, situacaoFrame, aleatorio)
     }
 
 
 
-    console.log('andadas do ponteiro: ' + interacoes);
     return console.log(`Programa finalizado com ${qtdTrocas} trocas de páginas.`)
 
 }
